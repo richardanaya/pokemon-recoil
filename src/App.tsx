@@ -16,7 +16,6 @@ function App() {
     <div className="App">
       Pokemon:
       <Suspense fallback={<div>loading</div>}>
-        <PokemonCount />
         <PokemonList />
       </Suspense>
     </div>

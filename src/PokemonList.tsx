@@ -2,16 +2,18 @@ import { Suspense, useEffect, useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import { useRecoilValue } from "recoil";
-import { pokemonState } from "./state/pokemon";
+import { pokemonDetailsState, pokemonState } from "./state/pokemon";
 import { usePokemon } from "./actions/pokemon";
 
 function PokemonList() {
-  const p = useRecoilValue(pokemonState);
+  const p = useRecoilValue(pokemonDetailsState);
 
   return (
     <>
-      {p.map((_) => (
-        <div key={_.name}>{_.name}</div>
+      {Array.from(p.entries()).map(([name, details]) => (
+        <div key={name}>
+          {name}: {details.abilities.map((_) => _.ability.name).join(", ")}
+        </div>
       ))}
     </>
   );
