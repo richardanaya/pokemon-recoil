@@ -7,6 +7,7 @@ import { usePokemon } from "./actions/pokemon";
 
 function PokemonList() {
   const p = useRecoilValue(pokemonDetailsState);
+  const { loadPokemon } = usePokemon();
 
   return (
     <>
